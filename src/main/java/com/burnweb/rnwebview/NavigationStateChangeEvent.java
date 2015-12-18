@@ -14,14 +14,16 @@ import com.facebook.react.uimanager.events.RCTEventEmitter;
     private final String mUrl;
     private final boolean mCanGoBack;
     private final boolean mCanGoForward;
+    private final String mTitle;
 
-    protected NavigationStateChangeEvent(int viewTag, long timestampMs, boolean isLoading, String url, boolean canGoBack, boolean canGoForward) {
+    protected NavigationStateChangeEvent(int viewTag, long timestampMs, boolean isLoading, String url, boolean canGoBack, boolean canGoForward, String title) {
         super(viewTag, timestampMs);
 
         mIsLoading = isLoading;
         mUrl = url;
         mCanGoBack = canGoBack;
         mCanGoForward = canGoForward;
+        mTitle = title;
     }
 
     @Override
@@ -40,6 +42,7 @@ import com.facebook.react.uimanager.events.RCTEventEmitter;
         eventData.putBoolean("canGoBack", mCanGoBack);
         eventData.putBoolean("canGoForward", mCanGoForward);
         eventData.putString("url", mUrl);
+        eventData.putString("title", mTitle);
         return eventData;
     }
 
